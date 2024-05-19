@@ -23,7 +23,7 @@ padding:5px 40px;
 box-shadow:none;
 font-weight:600;
 height:32px;
-
+border-radius:2px;
 
 `
 
@@ -37,7 +37,7 @@ export const CustomButtons=()=>{
            
            <Container>
             <ShoppingCartIcon/>
-            <Typography>Cart</Typography>
+            <Typography style={{marginLeft:10}}>Cart</Typography>
            </Container>
         </Wrapper>
     )
