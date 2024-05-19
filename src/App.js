@@ -3,11 +3,13 @@ import './App.css';
 
 //components
 import { Header } from './components/header/Header';
+import { Search } from './components/header/Search';
 
 function App() {
   return (
     <div className='App'>
       <Header/>
+     
       
     </div>
   );
