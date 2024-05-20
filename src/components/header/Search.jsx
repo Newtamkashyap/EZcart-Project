@@ -10,6 +10,7 @@ display:flex;
 const InputSearchBase=styled(InputBase)`
 width:100%;
 font-size:unset;
+margin-left:15px;
 `
 const SearchIcoWrapper=styled(Box)`
 color:blue;
@@ -19,7 +20,7 @@ padding:5px;
 export const Search=()=>{
     return(
         <SearchContainer>
-       <InputSearchBase placeholder="Search for products, brands and more"></InputSearchBase>
+       <InputSearchBase placeholder="Search for products, brands and more" ></InputSearchBase>
        <SearchIcoWrapper>
         <SearchIcon/>
        </SearchIcoWrapper>
