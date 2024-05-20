@@ -2,7 +2,7 @@ import { AppBar, Box, Toolbar, Typography, styled } from '@mui/material';
 //components
 import { Search } from './Search'
 import { CustomButtons } from './CustomButton';
-import { Home } from '../home/Home';
+
 
 //  here below we are using styled as a funcion in AppBar component from mui/material then storing in a variable i.e:StyledHeader.
 const StyledHeader = styled(AppBar)`
