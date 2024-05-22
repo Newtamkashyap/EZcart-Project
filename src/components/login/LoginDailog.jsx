@@ -1,5 +1,6 @@
 import { Dialog, Box, TextField, Typography, Button, styled } from '@mui/material'
 import { useState } from 'react'
+import { authenticateSignup } from '../../service/api';
 
 const Component = styled(Box)`
 height:70vh;
@@ -85,7 +86,7 @@ export const LoginDailog = ({ open, setOpen }) => {
     }
 
     const [account, toggleAccount] = useState(accountInitialValues.login)
-    const [signup, setSignup] = useState()//who will signup data will store in a varialble i.e:signupInitalValues
+    const [signup, setSignup] = useState(signupInitialValues)//who will signup data will store in a varialble i.e:signupInitalValues
 
     const handleClose = () => {
         setOpen(false);
@@ -103,7 +104,8 @@ export const LoginDailog = ({ open, setOpen }) => {
         console.log(signup);
 
     }
-const signupUser=()=>{
+const signupUser=async()=>{
+   let response= await authenticateSignup(signup);
 
 }
 
@@ -140,7 +142,7 @@ const signupUser=()=>{
                                 <TextField variant="standard" onChange={(e) => onInputChange(e)} name='password' label="Enter Password"></TextField>
                                 <TextField variant="standard" onChange={(e) => onInputChange(e)} name='phone' label="Enter Phone"></TextField>
 
-                                <LoginButton>Continue</LoginButton>
+                                <LoginButton onClick={()=>signupUser()}>Continue</LoginButton>
                             </Wrapper>
                     }
 
