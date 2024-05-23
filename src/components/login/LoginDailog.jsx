@@ -1,7 +1,7 @@
 import { Dialog, Box, TextField, Typography, Button, styled } from '@mui/material'
 import { useState, useContext } from 'react'
 import { authenticateSignup } from '../../service/api';
-import { DataContext } from '../../context/DataProvider';
+import { DataContext } from '../../context/DataProvider';//values are coming from DataContext
 const Component = styled(Box)`
 height:70vh;
 width:90vh;
