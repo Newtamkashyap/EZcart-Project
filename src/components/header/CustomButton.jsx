@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { Box,Button, Typography, styled} from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 //components
+
+import { DataContext } from "../../context/DataProvider";
 import { LoginDailog } from "../login/LoginDailog";
 const Wrapper=styled(Box)`
 display:flex;
@@ -33,12 +35,21 @@ export const CustomButtons=()=>{
 
     const [open,setOpen]=useState(false);//initial valuse is false.
 
+    const {account}=useContext(DataContext)
     const openDailog=()=>{
         setOpen(true);
     }
     return(
         <Wrapper>
+            {
+                account ?
+
+                <Typography>{account}</Typography>
+
+                :
            <LoginButton variant='contained' onClick={()=>openDailog()}>Login</LoginButton>
+
+            }
 
            <Typography style={{margin:3, width:135}}>Become a Seller</Typography>
            <Typography style={{margin:3,marginRight:40}}>More</Typography>

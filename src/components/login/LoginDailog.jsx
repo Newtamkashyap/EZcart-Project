@@ -1,7 +1,7 @@
 import { Dialog, Box, TextField, Typography, Button, styled } from '@mui/material'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { authenticateSignup } from '../../service/api';
-
+import { DataContext } from '../../context/DataProvider';
 const Component = styled(Box)`
 height:70vh;
 width:90vh;
@@ -88,6 +88,7 @@ export const LoginDailog = ({ open, setOpen }) => {
     const [account, toggleAccount] = useState(accountInitialValues.login)
     const [signup, setSignup] = useState(signupInitialValues)//who will signup data will store in a varialble i.e:signupInitalValues
 
+    const {setAccount} = useContext(DataContext);
     const handleClose = () => {
         setOpen(false);
         toggleAccount(accountInitialValues.login);//whenever we open this dialog bod by default it will open login page
@@ -104,10 +105,12 @@ export const LoginDailog = ({ open, setOpen }) => {
         console.log(signup);
 
     }
-const signupUser=async()=>{
-   let response= await authenticateSignup(signup);
-
-}
+    const signupUser = async () => {
+        let response = await authenticateSignup(signup);
+        if (!response) return;
+        handleClose();
+        setAccount(signup.firstname)
+    }
 
     return (
         <Dialog open={open} onClose={handleClose} PaperProps={{ sx: { maxWidth: 'unset' } }}>
@@ -142,7 +145,7 @@ const signupUser=async()=>{
                                 <TextField variant="standard" onChange={(e) => onInputChange(e)} name='password' label="Enter Password"></TextField>
                                 <TextField variant="standard" onChange={(e) => onInputChange(e)} name='phone' label="Enter Phone"></TextField>
 
-                                <LoginButton onClick={()=>signupUser()}>Continue</LoginButton>
+                                <LoginButton onClick={() => signupUser()}>Continue</LoginButton>
                             </Wrapper>
                     }
 
